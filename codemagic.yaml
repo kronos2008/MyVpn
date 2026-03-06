@@ -5,18 +5,27 @@ workflows:
     instance_type: mac_mini_m2
     environment:
       flutter: stable
+      flutter_config: 
+        channel: stable  # Явно указываем стабильный канал
       xcode: latest
       cocoapods: default
       vars:
         APP_ID: "com.example.myvpnapp"
+        FLUTTER_VERSION: "3.16.0"  # Фиксируем версию Flutter
     scripts:
+      - name: Clean old build
+        script: |
+          flutter clean
+          rm -rf ios/Pods ios/Podfile.lock
       - name: Get dependencies
-        script: flutter packages get
+        script: |
+          flutter pub get
       - name: Build APK
-        script: flutter build apk --release
+        script: |
+          flutter build apk --release --no-shrink  # --no-shrink временно для отладки
     artifacts:
       - build/app/outputs/flutter-apk/*.apk
     publishing:
       email:
         recipients:
-          - твоя_почта@gmail.com  # замени на свою
+          - kronos2008@yandex.ru  # или твоя почта
