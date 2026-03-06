@@ -1,12 +1,16 @@
-workflows:
-  default-workflow:
-    name: My VPN App
-    max_build_duration: 30
-    environment:
-      flutter: 3.41.4  # Меняем на версию, которую советует ошибка
-    scripts:
-      - flutter clean
-      - flutter pub get
-      - flutter build apk --release
-    artifacts:
-      - build/app/outputs/flutter-apk/*.apk
+name: my_vpn_app
+description: A VLESS VPN client
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.4.0 <4.0.0"  # Поднимаем минимальную версию
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_vless: ^1.0.3  # Только основная библиотека
+  # flutter_vless_android_emulator: ^1.0.1  # Временно отключаем
+
+flutter:
+  uses-material-design: true
