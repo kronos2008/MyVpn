@@ -2,23 +2,11 @@ workflows:
   default-workflow:
     name: My VPN App
     max_build_duration: 30
-    instance_type: mac_mini_m2
     environment:
       flutter: stable
-      xcode: latest
-      cocoapods: default
-      vars:
-        APP_ID: "com.example.myvpnapp"
     scripts:
-      - name: Clean old build
-        script: flutter clean
-      - name: Get dependencies
-        script: flutter pub get
-      - name: Build APK
-        script: flutter build apk --release
+      - flutter clean
+      - flutter pub get
+      - flutter build apk --release
     artifacts:
       - build/app/outputs/flutter-apk/*.apk
-    publishing:
-      email:
-        recipients:
-          - kronos2008@yandex.ru  # или твоя почта
