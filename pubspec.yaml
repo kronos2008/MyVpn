@@ -1,0 +1,20 @@
+name: my_vpn_app
+description: A VLESS VPN client like Happ
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  
+  # 👇 Это главная библиотека для VLESS
+  flutter_vless: ^1.0.3
+
+  # Для красивого интерфейса
+  flutter_vless_android_emulator: ^1.0.1
+
+flutter:
+  uses-material-design: true
